@@ -1,12 +1,11 @@
 <?php
-// ─────────────────────────────────────────
+
 //  DATABASE CONFIGURATION
-//  Change these values to match your setup
-// ─────────────────────────────────────────
-define('DB_HOST', 'localhost:3307'); // Change port if needed (default 3306)
+
+define('DB_HOST', 'localhost:3307');
 define('DB_USER', 'root');
-define('DB_PASS', '');               // Leave empty for default XAMPP
-define('DB_NAME', 'daily_planner_v2');
+define('DB_PASS', '');              
+define('DB_NAME', 'to_do_management_db');
 
 function getDB() {
     try {
