@@ -1,5 +1,5 @@
 <?php
-// api/journals.php — Full CRUD for Journal entries
+// api Journal entries
 header('Content-Type: application/json');
 require_once '../db.php';
 
@@ -9,7 +9,7 @@ $input  = json_decode(file_get_contents('php://input'), true);
 
 switch ($method) {
 
-    // READ — get all or single journal
+    // READ 
     case 'GET':
         if (!empty($_GET['id'])) {
             $stmt = $pdo->prepare("SELECT * FROM journals WHERE id = ?");
@@ -21,7 +21,7 @@ switch ($method) {
         }
         break;
 
-    // CREATE — new journal entry
+    // CREATE 
     case 'POST':
         if (empty($input['title'])) {
             http_response_code(400);
@@ -36,7 +36,7 @@ switch ($method) {
         echo json_encode($stmt->fetch());
         break;
 
-    // UPDATE — edit journal
+    // UPDATE 
     case 'PUT':
         if (empty($input['id'])) {
             http_response_code(400);
@@ -48,7 +48,7 @@ switch ($method) {
         echo json_encode(['success' => true]);
         break;
 
-    // DELETE — remove journal
+    // DELETE 
     case 'DELETE':
         $id = $_GET['id'] ?? null;
         if (!$id) { http_response_code(400); echo json_encode(['error' => 'ID required']); break; }
