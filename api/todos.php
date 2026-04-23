@@ -1,5 +1,5 @@
 <?php
-// api/todos.php — Todo items
+// api Todo items
 header('Content-Type: application/json');
 require_once '../db.php';
 
@@ -9,13 +9,13 @@ $input  = json_decode(file_get_contents('php://input'), true);
 
 switch ($method) {
 
-    // READ — get all todos
+    // READ 
     case 'GET':
         $stmt = $pdo->query("SELECT * FROM todos ORDER BY created_at DESC");
         echo json_encode($stmt->fetchAll());
         break;
 
-    // CREATE — add new todo
+    // CREATE 
     case 'POST':
         if (empty($input['task'])) {
             http_response_code(400);
@@ -30,7 +30,7 @@ switch ($method) {
         echo json_encode($stmt->fetch());
         break;
 
-    // UPDATE — toggle done/undone
+    // UPDATE 
     case 'PUT':
         if (empty($input['id'])) {
             http_response_code(400);
@@ -42,7 +42,7 @@ switch ($method) {
         echo json_encode(['success' => true]);
         break;
 
-    // DELETE — remove a todo
+    // DELETE 
     case 'DELETE':
         $id = $_GET['id'] ?? null;
         if (!$id) { http_response_code(400); echo json_encode(['error' => 'ID required']); break; }
