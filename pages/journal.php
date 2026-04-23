@@ -5,13 +5,13 @@ $pageTitle  = 'Journal';
 $pageLabel  = 'JOURNAL';
 include 'header.php';
 ?>
-        <div class="todo-wrapper">
+
             <!-- ── ADD JOURNAL ── -->
             <div class="container-wrapper">
-                <p>Write a journal today…</p>
+                <p >Write a journal today…</p>
                 <button class="btn-plus" id="btn-add-journal" title="Add journal">+</button>
             </div>
-        </div>
+    
             <!-- ── SECTION LABEL ── -->
             <div class="section-heading">My recent journals</div>
 

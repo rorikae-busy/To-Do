@@ -157,14 +157,12 @@ body {
 
 .container-wrapper {
     display: flex;
+    margin-top: 7%;
+    gap: 5px;
     justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-top: 8%;
-    margin-left: 20%;
-    width: calc(90% - 160px);
-
     padding: 5px 20px;
+    margin-left: 30%;
+    width: calc(90% - 300px);
     background: var(--white);
     border-radius: 25px;
     border-color:var(--cream);
@@ -174,9 +172,10 @@ body {
 }
 
 .container-wrapper p {
+    padding-top: 10px;
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--text);
+    color: var(--muted);
 }
 
 .todo-wrapper{
@@ -273,7 +272,7 @@ body {
     max-height: 250px;
     width: 100%;
     min-width: 0;
-    max-width: 680px;
+    max-width: 600px;
     overflow-y: auto;
     overflow-x: hidden;
 }
