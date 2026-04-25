@@ -68,6 +68,7 @@ include 'header.php';
 const API = '../api/notes.php';
 const noteModal = new bootstrap.Modal(document.getElementById('noteModal'));
 const viewModal = new bootstrap.Modal(document.getElementById('viewModal'));
+let editingNoteId = null;
 
 // Load all notes
 async function loadNotes() {
@@ -88,6 +89,9 @@ async function loadNotes() {
             <span class="star-icon">★</span>
             <span class="entry-title" onclick="viewNote(${n.id})">${esc(n.title)}</span>
             <span class="entry-date">${fmtDate(n.created_at)}</span>
+            <button class="btn-edit" onclick="editNote(event, ${n.id})" title="Edit">
+                <i class="bi bi-pencil-square"></i>
+            </button>
             <button class="btn-delete" onclick="deleteNote(event, ${n.id})" title="Delete">
                 <i class="bi bi-trash"></i>
             </button>
@@ -98,26 +102,40 @@ async function loadNotes() {
 
 // Open add modal
 function openAddModal() {
+    editingNoteId = null;
+    document.querySelector('#noteModal .modal-title').textContent = 'New Note';
     document.getElementById('modal-note-title').value   = '';
     document.getElementById('modal-note-content').value = '';
     noteModal.show();
     setTimeout(() => document.getElementById('modal-note-title').focus(), 300);
 }
 
-// Save note (POST)
+// Save note (POST or PUT)
 async function saveNote() {
     const title   = document.getElementById('modal-note-title').value.trim();
     const content = document.getElementById('modal-note-content').value.trim();
     if (!title) { showToast('Please enter a title!'); return; }
 
-    await fetch(API, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ title, content })
-    });
+    if (editingNoteId) {
+        // Edit existing
+        await fetch(API, {
+            method:  'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ id: editingNoteId, title, content })
+        });
+        showToast('Note updated ✏️');
+    } else {
+        // Add new
+        await fetch(API, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ title, content })
+        });
+        showToast('Note saved!');
+    }
+    editingNoteId = null;
     noteModal.hide();
     loadNotes();
-    showToast('Note saved!');
 }
 
 // View note (GET single)
@@ -128,6 +146,19 @@ async function viewNote(id) {
     document.getElementById('view-date').textContent    = 'Written on ' + fmtDate(data.created_at);
     document.getElementById('view-content').textContent = data.content || '(No content written)';
     viewModal.show();
+}
+
+// Edit note (open modal pre-filled)
+async function editNote(e, id) {
+    e.stopPropagation();
+    const res  = await fetch(`${API}?id=${id}`);
+    const data = await res.json();
+    editingNoteId = id;
+    document.querySelector('#noteModal .modal-title').textContent = 'Edit Note';
+    document.getElementById('modal-note-title').value   = data.title;
+    document.getElementById('modal-note-content').value = data.content || '';
+    noteModal.show();
+    setTimeout(() => document.getElementById('modal-note-title').focus(), 300);
 }
 
 // Delete note (DELETE)

@@ -69,6 +69,7 @@ include 'header.php';
 const API = '../api/journals.php';
 const entryModal = new bootstrap.Modal(document.getElementById('entryModal'));
 const viewModal  = new bootstrap.Modal(document.getElementById('viewModal'));
+let editingJournalId = null;
 
 // Load all journals
 async function loadJournals() {
@@ -89,6 +90,9 @@ async function loadJournals() {
             <span class="star-icon">★</span>
             <span class="entry-title" onclick="viewJournal(${j.id})">${esc(j.title)}</span>
             <span class="entry-date">${fmtDate(j.created_at)}</span>
+            <button class="btn-edit" onclick="editJournal(event, ${j.id})" title="Edit">
+                <i class="bi bi-pencil-square"></i>
+            </button>
             <button class="btn-delete" onclick="deleteJournal(event, ${j.id})" title="Delete">
                 <i class="bi bi-trash"></i>
             </button>
@@ -99,6 +103,7 @@ async function loadJournals() {
 
 // Open add modal from input bar
 function openAddModal() {
+    editingJournalId = null;
     document.getElementById('modal-title').textContent        = 'New Journal Entry';
     document.getElementById('modal-entry-title').value        = '';
     document.getElementById('modal-entry-content').value      = '';
@@ -112,14 +117,26 @@ async function saveJournal() {
     const content = document.getElementById('modal-entry-content').value.trim();
     if (!title) { showToast('Please enter a title!'); return; }
 
-    await fetch(API, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ title, content })
-    });
+    if (editingJournalId) {
+        // Edit existing
+        await fetch(API, {
+            method:  'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ id: editingJournalId, title, content })
+        });
+        showToast('Journal updated');
+    } else {
+        // Add new
+        await fetch(API, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ title, content })
+        });
+        showToast('Journal saved!');
+    }
+    editingJournalId = null;
     entryModal.hide();
     loadJournals();
-    showToast('Journal saved! 📓');
 }
 
 // View journal (GET single)
@@ -132,13 +149,26 @@ async function viewJournal(id) {
     viewModal.show();
 }
 
+// Edit journal (open modal pre-filled)
+async function editJournal(e, id) {
+    e.stopPropagation();
+    const res  = await fetch(`${API}?id=${id}`);
+    const data = await res.json();
+    editingJournalId = id;
+    document.getElementById('modal-title').textContent        = 'Edit Journal Entry';
+    document.getElementById('modal-entry-title').value        = data.title;
+    document.getElementById('modal-entry-content').value      = data.content || '';
+    entryModal.show();
+    setTimeout(() => document.getElementById('modal-entry-title').focus(), 300);
+}
+
 // Delete journal (DELETE)
 async function deleteJournal(e, id) {
     e.stopPropagation();
     if (!confirm('Delete this journal entry?')) return;
     await fetch(`${API}?id=${id}`, { method: 'DELETE' });
     loadJournals();
-    showToast('Journal deleted 🗑');
+    showToast('Journal deleted ');
 }
 
 document.getElementById('btn-add-journal').addEventListener('click', openAddModal);
