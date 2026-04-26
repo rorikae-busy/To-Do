@@ -16,9 +16,9 @@ include 'header.php';
 
             <!-- ── NOTES LIST ── -->
             <div class="card-wrapper">
-                <img src="/image/peek-up.png" class="up-sticker" alt="Sticker">
+                <img src="../image/peek-up.png" class="up-sticker" alt="Sticker">
 
-            <div class="list-card" id="todo-list">
+            <div class="list-card" id="notes-list">
                 <p class="empty-state">Loading notes...</p>
             </div>
         </div>

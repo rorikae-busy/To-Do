@@ -17,9 +17,9 @@ include 'header.php';
 
             <!-- ── JOURNAL LIST ── -->
             <div class="card-wrapper">
-                <img src="/image/peek-right.png" class="right-sticker" alt="Sticker">
+                <img src="../image/peek-right.png" class="right-sticker" alt="Sticker">
 
-            <div class="list-card" id="todo-list">
+            <div class="list-card" id="journal-list">
                 <p class="empty-state">Loading journals...</p>
             </div>
         </div>
