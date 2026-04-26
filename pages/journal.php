@@ -26,7 +26,7 @@ include 'header.php';
 <div class="modal fade" id="entryModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <img src="/image/writing.png" class="modal-sticker" alt="sticker">
+            <img src="../image/writing.png" class="modal-sticker" alt="sticker">
             <div class="modal-header">
                 <h5 class="modal-title" id="modal-title">New Journal Entry</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -92,10 +92,10 @@ async function loadJournals() {
             <span class="entry-title" onclick="viewJournal(${j.id})">${esc(j.title)}</span>
             <span class="entry-date">${fmtDate(j.created_at)}</span>
             <button class="btn-edit" onclick="editJournal(event, ${j.id})" title="Edit">
-                <img src="/image/pencil.png" alt="Edit">
+                <img src="../image/pencil.png" alt="Edit">
             </button>
             <button class="btn-delete" onclick="deleteJournal(event, ${j.id})" title="Delete">
-                <img src="/image/trashbin.png" alt="Delete">
+                <img src="../image/trashbin.png" alt="Delete">
             </button>
         `;
         list.appendChild(div);
