@@ -10,7 +10,7 @@ IPT final project
 | Viene Dominique Sandoval | Backend |
 | Brex Layag | Backend |
 
-#Project Description
+# Project Description
   Many people forget their daily tasks or have a hard time organizing what they need to do,
 especially when everything is written on paper or not tracked properly. This system is a
 web-based task management application that allows users to add, view, update, and delete
@@ -20,7 +20,7 @@ o Marking tasks as completed
 o Showing progress using a progress bar
 
 
-#Functionalities
+# Functionalities
 • Add Task (Create)
 • View Task List (Read)
 • Mark Task as Done/Undone (Update)
@@ -30,7 +30,7 @@ o Showing progress using a progress bar
 • Dynamic Display using JavaScript Fetch
 
 
-#Technologies Used
+# Technologies Used
 • HTML
 • Bootstrap 5
 • CSS (Custom UI Design)
