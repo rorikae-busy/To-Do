@@ -62,7 +62,7 @@ async function loadTodos() {
             </button>
             <span class="task-label">${esc(todo.task)}</span>
             <button class="btn-delete" onclick="deleteTodo(${todo.id})" title="Delete">
-                <i class="bi bi-trash"></i>
+                <img src="../image/trashbin.png" alt="Delete">
             </button>
         `;
         list.appendChild(div);
@@ -88,7 +88,7 @@ async function addTask() {
     });
     input.value = '';
     loadTodos();
-    showToast('Task added ✅');
+    showToast('Task added ');
 }
 
 // Toggle done via PUT
@@ -106,7 +106,7 @@ async function deleteTodo(id) {
     if (!confirm('Delete this task?')) return;
     await fetch(`${API}?id=${id}`, { method: 'DELETE' });
     loadTodos();
-    showToast('Task deleted 🗑');
+    showToast('Task deleted ');
 }
 
 // Enter key support
