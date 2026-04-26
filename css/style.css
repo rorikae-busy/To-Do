@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
-/* ── COLORS — edit here to change the whole theme ── */
+/* ── COLORS  ── */
 :root {
     --bg:           #8fbc8f;   /* sage green background */
     --green-dark:   #2d6a2d;   /* dark green (text, buttons) */
@@ -292,7 +292,7 @@ body {
     transform: translateY(-50%);
     width: 100px;
     height: auto;
-    z-index: 9999;
+    z-index: 1045;
     pointer-events: none;
 }
 
@@ -303,7 +303,7 @@ body {
     transform: translateY(-50%);
     width: 135px;
     height: auto;
-    z-index: 9999;
+    z-index: 1045;
     pointer-events: none;
 }
 
@@ -314,7 +314,7 @@ body {
     transform: translateY(-50%);
     width: 150px;
     height: auto;
-    z-index: 9999;
+    z-index: 1045;
     pointer-events: none;
 }
 
