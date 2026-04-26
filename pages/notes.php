@@ -168,7 +168,7 @@ async function deleteNote(e, id) {
     if (!confirm('Delete this note?')) return;
     await fetch(`${API}?id=${id}`, { method: 'DELETE' });
     loadNotes();
-    showToast('Note deleted 🗑');
+    showToast('Note deleted');
 }
 
 // Trigger modal from input bar
