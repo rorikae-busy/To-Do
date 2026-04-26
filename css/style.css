@@ -42,7 +42,15 @@ body {
     align-items: center;
     justify-content: center;
     gap: 5px;
+
+    /* REMOVE this if you want full image visible */
     background: var(--bg);
+
+    /* ADD background image */
+    background-image: url("../image/bg image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 :root {
