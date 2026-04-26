@@ -1,7 +1,7 @@
 # To-Do!
 IPT final project 
 
-#  Backend
+# MEMBERS
 | Name | Role |
 |------|------|
 | Christine Anne Quezaine Lecaros | Frontend|
