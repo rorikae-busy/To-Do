@@ -265,6 +265,12 @@ body {
 }
 
 /* ── LIST CARD ── */
+.card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+}
+
 .list-card {
     display: flex;
     flex-direction: column;
@@ -276,10 +282,40 @@ body {
     min-height: 250px;
     max-height: 250px;
     width: 100%;
-    min-width: 0;
-    max-width: 620px;
     overflow-y: auto;
-    overflow-x: hidden;
+}
+
+.left-sticker {
+    position: absolute;
+    top: 50%;
+    left: -81px;
+    transform: translateY(-50%);
+    width: 100px;
+    height: auto;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.right-sticker {
+    position: absolute;
+    top: 50%;
+    right: -79px;
+    transform: translateY(-50%);
+    width: 135px;
+    height: auto;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.up-sticker {
+    position: absolute;
+    top: -8%;
+    right: 370px;
+    transform: translateY(-50%);
+    width: 150px;
+    height: auto;
+    z-index: 9999;
+    pointer-events: none;
 }
 
 .list-card::-webkit-scrollbar {

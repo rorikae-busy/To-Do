@@ -16,9 +16,14 @@ include 'header.php';
             <div class="section-heading">My recent journals</div>
 
             <!-- ── JOURNAL LIST ── -->
-            <div class="list-card" id="journal-list">
-                <p class="empty-state">Loading journals…</p>
+            <div class="card-wrapper">
+                <img src="/image/peek-right.png" class="right-sticker" alt="Sticker">
+
+            <div class="list-card" id="todo-list">
+                <p class="empty-state">Loading journals...</p>
             </div>
+        </div>
+
 
 <?php include 'footer.php'; ?>
 

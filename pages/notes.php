@@ -15,9 +15,14 @@ include 'header.php';
             <div class="section-heading">notes</div>
 
             <!-- ── NOTES LIST ── -->
-            <div class="list-card" id="notes-list">
-                <p class="empty-state">Loading notes…</p>
+            <div class="card-wrapper">
+                <img src="/image/peek-up.png" class="up-sticker" alt="Sticker">
+
+            <div class="list-card" id="todo-list">
+                <p class="empty-state">Loading notes...</p>
             </div>
+        </div>
+
 
 <?php include 'footer.php'; ?>
 

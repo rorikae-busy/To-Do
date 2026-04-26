@@ -20,11 +20,15 @@ include 'header.php';
                        placeholder="Write your task here…" maxlength="200" autocomplete="off">
                 <button class="btn-plus" id="btn-add-task" title="Add task">+</button>
             </div>
-</div>
+        </div>
             <!-- ── TODO LIST ── -->
+            <div class="card-wrapper">
+                <img src="/image/peek-left.png" class="left-sticker" alt="Sticker">
+
             <div class="list-card" id="todo-list">
-                    <p class="empty-state">Loading tasks…</p>
+                <p class="empty-state">Loading tasks…</p>
             </div>
+        </div>
 
 <?php include 'footer.php'; ?>
 
