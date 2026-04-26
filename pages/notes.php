@@ -25,6 +25,7 @@ include 'header.php';
 <div class="modal fade" id="noteModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+            <img src="/image/writing.png" class="modal-sticker" alt="sticker">
             <div class="modal-header">
                 <h5 class="modal-title">New Note</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -90,10 +91,10 @@ async function loadNotes() {
             <span class="entry-title" onclick="viewNote(${n.id})">${esc(n.title)}</span>
             <span class="entry-date">${fmtDate(n.created_at)}</span>
             <button class="btn-edit" onclick="editNote(event, ${n.id})" title="Edit">
-                <i class="bi bi-pencil-square"></i>
+                <img src="/image/edit.png" alt="Edit">
             </button>
             <button class="btn-delete" onclick="deleteNote(event, ${n.id})" title="Delete">
-                <i class="bi bi-trash"></i>
+                <img src="/image/delete.png" alt="Delete">
             </button>
         `;
         list.appendChild(div);
